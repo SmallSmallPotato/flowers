@@ -107,6 +107,16 @@ var LZString=function(){var r=String.fromCharCode,o="ABCDEFGHIJKLMNOPQRSTUVWXYZa
 	<tw-storydata name="index" startnode="19" creator="Twine" creator-version="2.12.1" format="SugarCube" format-version="2.37.3" ifid="A0DFA012-AE5B-40FE-A673-C13DE88EBF89" options="" tags="" zoom="1" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">/* 1. 引入優雅的中英文網頁字型 */
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Noto+Serif+TC:wght@300;400;600&display=swap');
 
+/* 隱藏左側 UI 側邊欄 */
+#ui-bar {
+  display: none !important;
+}
+
+/* 讓主內容區塊填滿左側空間（取消原本留給側邊欄的 margin） */
+#story {
+  margin-left: 0 !important;
+}
+
 /* 2. 整體背景設定 */
 body {
     font-family: 'Cormorant Garamond', 'Noto Serif TC', "Songti TC", serif;
