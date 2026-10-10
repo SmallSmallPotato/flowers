@@ -117,6 +117,15 @@ var LZString=function(){var r=String.fromCharCode,o="ABCDEFGHIJKLMNOPQRSTUVWXYZa
   margin-left: 0 !important;
 }
 
+/* --- 1. 修正背景在手機上的固定與滾動問題 --- */
+html, body {
+  width: 100%;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
 /* 2. 整體背景設定 */
 body {
     font-family: 'Cormorant Garamond', 'Noto Serif TC', "Songti TC", serif;
@@ -124,9 +133,11 @@ body {
     line-height: 1.8;
     letter-spacing: 0.04em;
     background-image: url("https://smallsmallpotato.github.io/flowers/images/image_1.PNG");
-    background-size: cover;
+    background-size: cover !important;
+    background-position: center center !important;
+  /* 行動裝置相容的固定背景寫法 */
+    background-attachment: scroll !important; 
     background-repeat: no-repeat;
-    background-attachment: fixed;
 }
 
 /* 3. 主容器：仿造復古牛皮紙卡片，增加多層次陰影與拼貼感 */
@@ -584,6 +595,54 @@ body {
 .aromatic-tags a span {
   opacity: 0.7;
   margin-right: 4px;
+}
+
+
+/* 建立一個固定的全螢幕背景層，解決 iOS Safari 背景亂跑的問題 */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-image: url("https://smallsmallpotato.github.io/flowers/images/image_0.JPG");
+  background-size: cover;
+  background-position: center center;
+  z-index: -999;
+}
+
+/* --- 2. 徹底解決畫面不置中、偏左的問題 --- */
+#ui-bar {
+  display: none !important;
+}
+
+#story {
+  margin: 0 auto !important;
+  max-width: 630px !important;
+  width: 100% !important;
+  float: none !important;
+  position: relative;
+  left: 0 !important;
+  right: 0 !important;
+}
+
+/* 確保 passage 容器也是置中且適應手機螢幕寬度 */
+.passage {
+  max-width: 630px !important;
+  margin: 0 auto !important;
+  padding: 10px !important;
+  box-sizing: border-box;
+}
+
+/* --- 3. 手機螢幕微調（響應式安全距離） --- */
+@media screen and (max-width: 768px) {
+  .intro-box, .flower-card {
+    margin: 20px auto !important;
+    padding: 20px !important;
+    width: 92% !important;
+    box-sizing: border-box;
+  }
 }</style><script role="script" id="twine-user-script" type="text/twine-javascript"></script><tw-passagedata pid="1" name="StoryInit" tags="" position="0,0" size="100,100">&lt;&lt;silently&gt;&gt;
   &lt;&lt;run 
     const today = new Date();
